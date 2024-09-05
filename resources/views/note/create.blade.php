@@ -3,10 +3,40 @@
         <h1>Create new note</h1>
         <form action="{{ route('note.store') }}" method="POST" class="note">
             @csrf
-            <textarea name="note" rows="10" class="note-body" placeholder="Enter your note here"></textarea>
+
+            <!-- Pole do wprowadzenia tytułu notki -->
+            <div class="form-group">
+                <label for="title">Note Title</label>
+                <input type="text" name="title" class="form-control" placeholder="Enter note title" required>
+            </div>
+
+            <!-- Pole tekstowe dla treści notki -->
+            <div class="form-group">
+                <label for="note">Note Content</label>
+                <textarea name="note" rows="5" class="note-body" placeholder="Enter your note here" required></textarea>
+            </div>
+
+            <!-- Dropdown do wyboru sali -->
+            <div class="form-group">
+                <label for="room">Select Room</label>
+                <select name="room" class="form-control" required>
+                    <option value="" disabled selected>Select a room</option>
+                    @for ($i = 1; $i <= 50; $i++)
+                        <option value=" {{ $i }}">Sala {{ $i }}</option>
+                    @endfor
+                </select>
+            </div>
+
+            <!-- Pole do wprowadzenia daty -->
+            <div class="form-group">
+                <label for="date">Select Date</label>
+                <input type="date" name="date" class="form-control" required>
+            </div>
+
+            <!-- Przyciski formularza -->
             <div class="note-buttons">
                 <a href="{{ route('note.index') }}" class="note-cancel-button">Cancel</a>
-                <button class="note-submit-button">Submit</button>
+                <button type="submit" class="note-submit-button">Submit</button>
             </div>
         </form>
     </div>

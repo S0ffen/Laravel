@@ -15,13 +15,15 @@ class NoteController extends Controller
         $query = $request->input('query');
 
         $notes = Note::query()
-            ->where('user_id', $request->user()->id)
-            ->when($query, function ($queryBuilder) use ($query) {
-                $queryBuilder->where('note', 'LIKE', "%{$query}%");
-            })
-            ->orderBy('created_at', 'desc')
-            ->paginate();
-
+        ->where('user_id', $request->user()->id)
+        ->when($query, function ($queryBuilder) use ($query) {
+            $queryBuilder->where(function ($subQuery) use ($query) {
+                $subQuery->where('title', 'LIKE', "%{$query}%")
+                         ->orWhere('room', 'LIKE', "%{$query}%");
+            });
+        })
+        ->orderBy('created_at', 'desc')
+        ->paginate();
         return view('note.index', ['notes' => $notes]);
     }
 
@@ -38,14 +40,20 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
+        // Dodanie walidacji dla nowych pól
         $data = $request->validate([
-            'note' =>['required','string'],
+            'title' => ['required', 'string', 'max:255'],
+            'note' => ['required', 'string'],
+            'room' => ['required', 'string'],
+            'date' => ['required', 'date'],
         ]);
 
         $data['user_id'] = $request->user()->id;
+        
+        // Tworzenie nowej notki z danymi
         $note = Note::create($data);
 
-        return to_route('note.show', $note)->with('message', 'Note was create');
+        return to_route('note.show', $note)->with('message', 'Note was created');
     }
 
     /**
@@ -56,19 +64,9 @@ class NoteController extends Controller
         if ($note->user_id != request()->user()->id) {
             abort(403);
         }
-        
-        return view('note.show', ['note' => $note]);
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Note $note)
-    {
-        if ($note->user_id != request()->user()->id) {
-            abort(403);
-        }
-        return view('note.edit', ['note' => $note]);
+        // Wyświetlanie pojedynczej notki
+        return view('note.show', ['note' => $note]);
     }
 
     /**
@@ -76,15 +74,20 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
-        if ($note->user_id != request()->user()->id) {
+        if ($note->user_id != $request->user()->id) {
             abort(403);
         }
+    
+        // Walidacja nowych pól
         $data = $request->validate([
-            'note' =>['required','string'],
+            'title' => ['required', 'string', 'max:255'],
+            'note' => ['required', 'string'],
+            'room' => ['required', 'string'],
+            'date' => ['required', 'date'],
         ]);
-
-        $note ->update($data);
-
+    
+        $note->update($data);
+    
         return to_route('note.show', $note)->with('message', 'Note was updated');
     }
 
@@ -98,6 +101,15 @@ class NoteController extends Controller
         }
         $note->delete();
 
-        return to_route('note.index') ->with('message','Note was deleted');
+        return to_route('note.index')->with('message', 'Note was deleted');
     }
+    public function edit(Note $note)
+    {
+    if ($note->user_id != request()->user()->id) {
+        abort(403); // Sprawdzenie, czy użytkownik jest właścicielem notatki
+    }
+
+    return view('note.edit', ['note' => $note]); // Przekazanie notatki do widoku
+    }
+
 }

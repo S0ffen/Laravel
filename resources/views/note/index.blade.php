@@ -6,31 +6,39 @@
             <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700">Search</button>
         </form>
     </div>
+    
     <div class="note-container">
         <a href="{{ route('note.create') }}" class="new-note-btn">
             New PC
         </a>
+        
         <div class="notes">
-            @foreach ($notes as $note )
-            <div class="note">
-                <div class="note-body">
-                    {{ Str::words($note->note, 30)}}
+            @foreach ($notes as $note)
+                <div class="note">
+                    <div class="note-body">
+                        <!-- Wyświetlanie tytułu, pokoju i daty -->
+                        <h4><strong>Title:</strong> {{ $note->title }}</h4>
+                        <p><strong>Sala:</strong> {{ $note->room }}</p>
+                        <p><strong>Date:</strong> {{ $note->date }}</p>
+                        
+                        <!-- Wyświetlanie zawartości notatki (skrót) -->
+                        <p>{{ Str::words($note->note, 30) }}</p>
+                    </div>
+                    <div class="note-buttons">
+                        <a href="{{ route('note.show', $note) }}" class="note-edit-button">View</a>
+                        <a href="{{ route('note.edit', $note) }}" class="note-edit-button">Edit</a>
+                        <form action="{{ route('note.destroy', $note) }}" method="POST" class="delete-note-form">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="note-delete-button">Delete</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="note-buttons">
-                    <a href="{{ route('note.show', $note) }}" class="note-edit-button">View</a>
-                    <a href="{{ route('note.edit', $note) }}" class="note-edit-button">Edit</a>
-                    <form action="{{route('note.destroy', $note)}}" method="POST" class="delete-note-form">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="note-delete-button">Delete</button>
-                    </form>
-                </div>
-            </div>
             @endforeach
-
         </div>
+
         <div class="p-6">
-            {{$notes -> links() }}
+            {{ $notes->links() }}
         </div>  
     </div>
 
