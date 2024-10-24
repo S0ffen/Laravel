@@ -33,6 +33,17 @@
                 <input type="date" name="date" class="form-control" required>
             </div>
 
+            <!-- Pole wyboru scrapped -->
+            <div class="form-group">
+                <label for="scrapped">Czy element jest zezłomowany?</label>
+                <select name="scrapped" id="scrapped" class="form-control">
+                    <option value="no">Nie</option>
+                    <option value="yes">Tak</option>
+                </select>
+            </div>
+
+
+
             <!-- Przyciski formularza -->
             <div class="note-buttons">
                 <a href="{{ route('note.index') }}" class="note-cancel-button">Cancel</a>

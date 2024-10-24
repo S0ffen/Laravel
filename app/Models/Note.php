@@ -15,5 +15,7 @@ class Note extends Model
         'room',
         'date',
         'user_id',
+        'scrapped',
+
     ];
 }

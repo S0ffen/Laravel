@@ -15,15 +15,15 @@ class NoteController extends Controller
         $query = $request->input('query');
 
         $notes = Note::query()
-        ->where('user_id', $request->user()->id)
-        ->when($query, function ($queryBuilder) use ($query) {
-            $queryBuilder->where(function ($subQuery) use ($query) {
-                $subQuery->where('title', 'LIKE', "%{$query}%")
-                         ->orWhere('room', 'LIKE', "%{$query}%");
-            });
-        })
-        ->orderBy('created_at', 'desc')
-        ->paginate();
+            ->where('user_id', $request->user()->id)
+            ->when($query, function ($queryBuilder) use ($query) {
+                $queryBuilder->where(function ($subQuery) use ($query) {
+                    $subQuery->where('title', 'LIKE', "%{$query}%")
+                        ->orWhere('room', 'LIKE', "%{$query}%");
+                });
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate();
         return view('note.index', ['notes' => $notes]);
     }
 
@@ -46,12 +46,16 @@ class NoteController extends Controller
             'note' => ['required', 'string'],
             'room' => ['required', 'string'],
             'date' => ['required', 'date'],
+            'scrapped' => ['required', 'in:yes,no'],
         ]);
 
         $data['user_id'] = $request->user()->id;
-        
+
+
+
         // Tworzenie nowej notki z danymi
         $note = Note::create($data);
+        $note->refresh();
 
         return to_route('note.show', $note)->with('message', 'Note was created');
     }
@@ -77,17 +81,21 @@ class NoteController extends Controller
         if ($note->user_id != $request->user()->id) {
             abort(403);
         }
-    
+
         // Walidacja nowych pól
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'note' => ['required', 'string'],
             'room' => ['required', 'string'],
             'date' => ['required', 'date'],
+            'scrapped' => ['required', 'in:yes,no'], // Dodanie walidacji dla scra
         ]);
-    
+
+
+
         $note->update($data);
-    
+
+
         return to_route('note.show', $note)->with('message', 'Note was updated');
     }
 
@@ -105,11 +113,24 @@ class NoteController extends Controller
     }
     public function edit(Note $note)
     {
-    if ($note->user_id != request()->user()->id) {
-        abort(403); // Sprawdzenie, czy użytkownik jest właścicielem notatki
+        if ($note->user_id != request()->user()->id) {
+            abort(403); // Sprawdzenie, czy użytkownik jest właścicielem notatki
+        }
+
+        return view('note.edit', ['note' => $note]); // Przekazanie notatki do widoku
     }
 
-    return view('note.edit', ['note' => $note]); // Przekazanie notatki do widoku
-    }
+    public function searchByRoom(Request $request)
+    {
+        $query = Note::query();
 
+        // Filtrowanie notatek na podstawie wybranej sali
+        if ($request->has('room') && $request->room != '') {
+            $query->where('room', $request->room);
+        }
+
+        $notes = $query->paginate(10); // Paginate results if needed
+
+        return view('note.index', compact('notes'));
+    }
 }

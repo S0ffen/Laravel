@@ -23,7 +23,8 @@
                 <select name="room" class="form-control" required>
                     <option value="" disabled>Select a room</option>
                     @for ($i = 1; $i <= 50; $i++)
-                        <option value="Room {{ $i }}" {{ $note->room == 'Room ' . $i ? 'selected' : '' }}>Sala {{ $i }}</option>
+                        <option value="Room {{ $i }}" {{ $note->room == 'Room ' . $i ? 'selected' : '' }}>
+                            Sala {{ $i }}</option>
                     @endfor
                 </select>
             </div>
@@ -32,6 +33,15 @@
             <div class="form-group">
                 <label for="date">Select Date</label>
                 <input type="date" name="date" class="form-control" value="{{ $note->date }}" required>
+            </div>
+
+            <!-- Pole wyboru scrapped -->
+            <div class="form-group">
+                <label for="scrapped">Czy element jest zezłomowany?</label>
+                <select name="scrapped" id="scrapped" class="form-control">
+                    <option value="no" {{ $note->scrapped == 'no' ? 'selected' : '' }}>Nie</option>
+                    <option value="yes" {{ $note->scrapped == 'yes' ? 'selected' : '' }}>Tak</option>
+                </select>
             </div>
 
             <!-- Przyciski formularza -->
