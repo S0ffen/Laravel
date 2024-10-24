@@ -10,17 +10,16 @@
     </div>
 
     <div class="flex justify-center mb-3 py-4">
-        <!-- Form for searching by room -->
-        <form action="{{ route('notes.searchRoom') }}" method="GET" class="flex space-x-2">
-            <select id="room" name="room" class="px-4 py-2 border rounded-md">
-                <option value="" selected>Wszystkie Sale</option>
-                @for ($i = 1; $i <= 50; $i++)
-                    <option value="{{ $i }}" {{ request('room') == $i ? 'selected' : '' }}>Sala
-                        {{ $i }}</option>
-                @endfor
+        <!-- Form for searching by scrapped status -->
+        <form action="{{ route('notes.searchScrapped') }}" method="GET" class="flex space-x-2">
+            <select id="scrapped" name="scrapped" class="px-4 py-2 border rounded-md">
+                <option value="" selected>Wszystkie </option>
+                <option value="yes" {{ request('scrapped') == 'yes' ? 'selected' : '' }}>Zezłomowany</option>
+                <option value="no" {{ request('scrapped') == 'no' ? 'selected' : '' }}>Nie zezłomowany</option>
             </select>
-            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Search by
-                Room</button>
+            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                Search by Status
+            </button>
         </form>
     </div>
 

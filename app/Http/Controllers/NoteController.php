@@ -120,16 +120,16 @@ class NoteController extends Controller
         return view('note.edit', ['note' => $note]); // Przekazanie notatki do widoku
     }
 
-    public function searchByRoom(Request $request)
+    public function searchByScrapped(Request $request)
     {
         $query = Note::query();
 
-        // Filtrowanie notatek na podstawie wybranej sali
-        if ($request->has('room') && $request->room != '') {
-            $query->where('room', $request->room);
+        // Filtrowanie notatek na podstawie statusu scrapped
+        if ($request->has('scrapped') && $request->scrapped != '') {
+            $query->where('scrapped', $request->scrapped);
         }
 
-        $notes = $query->paginate(10); // Paginate results if needed
+        $notes = $query->paginate(10); // Paginacja wyników
 
         return view('note.index', compact('notes'));
     }
