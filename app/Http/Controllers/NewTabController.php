@@ -20,7 +20,7 @@ class NewTabController extends Controller
         for ($i = 1; $i <= 10; $i++) {
             Note::create([
                 'user_id' => $user->id,
-                'title' => fake()->sentence, // Dodanie tytułu
+                'title' => fake()->realText(50),
                 'note' => fake()->realText(20),
                 'room' =>  rand(1, 50), // Dodanie przykładowego numeru pokoju
                 'date' => now(), // Dodanie przykładowej daty
