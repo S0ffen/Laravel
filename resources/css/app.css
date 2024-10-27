@@ -7,8 +7,9 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 .note-container {
-    max-width: 980px;
+    max-width: 1300px;
     margin: 0 auto;
+  
 }
 .new-note-btn {
     width: 200px;
@@ -40,7 +41,6 @@
     margin: 0 auto;
 }
 .note {
-    background-color: #f0c806;
     border-radius: 8px;
     width: 280px;
     margin: 0 10px 20px;
@@ -49,6 +49,8 @@
     cursor: pointer;
     text-decoration: none;
     color: #1e1e1e;
+    
+    overflow: hidden;
 }
 
 .note .note-body {

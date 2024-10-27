@@ -13,19 +13,22 @@ class NoteController extends Controller
     public function index(Request $request)
     {
         $query = $request->input('query');
+        $scrapped = $request->input('scrapped');
 
         $notes = Note::query()
             ->where('user_id', $request->user()->id)
             ->when($query, function ($queryBuilder) use ($query) {
-                $queryBuilder->where(function ($subQuery) use ($query) {
-                    $subQuery->where('title', 'LIKE', "%{$query}%")
-                        ->orWhere('room', 'LIKE', "%{$query}%");
-                });
+                $queryBuilder->where('title', 'LIKE', "%{$query}%");
+            })
+            ->when($scrapped, function ($queryBuilder) use ($scrapped) {
+                $queryBuilder->where('scrapped', $scrapped);
             })
             ->orderBy('created_at', 'desc')
             ->paginate();
+
         return view('note.index', ['notes' => $notes]);
     }
+
 
     /**
      * Show the form for creating a new resource.

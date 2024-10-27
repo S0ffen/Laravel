@@ -22,7 +22,7 @@ class NewTabController extends Controller
                 'user_id' => $user->id,
                 'title' => fake()->sentence, // Dodanie tytułu
                 'note' => fake()->realText(20),
-                'room' => 'Room ' . rand(1, 50), // Dodanie przykładowego numeru pokoju
+                'room' =>  rand(1, 50), // Dodanie przykładowego numeru pokoju
                 'date' => now(), // Dodanie przykładowej daty
                 'scrapped' => rand(0, 1) ? 'yes' : 'no', // Losowe ustawienie scrapped
             ]);

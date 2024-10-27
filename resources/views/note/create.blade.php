@@ -1,7 +1,8 @@
 <x-app-layout>
     <div class="note-container single-note">
-        <h1>Create new note</h1>
-        <form action="{{ route('note.store') }}" method="POST" class="note">
+        <h1 class="text-3xl text-center font-semibold m-4">Create new PC to database</h1>
+        <form action="{{ route('note.store') }}" method="POST" class="note bg-yellow-300">
+
             @csrf
 
             <!-- Pole do wprowadzenia tytułu notki -->
