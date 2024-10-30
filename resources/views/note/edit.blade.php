@@ -14,6 +14,47 @@
                         value="{{ $note->title }}" required>
                 </div>
 
+                <!-- Dropdown do wyboru RAM -->
+                <div class="form-group">
+                    <label for="ram">RAM</label>
+                    <br>
+                    <select name="ram" class="form-control">
+                        <option value="" disabled selected>Select RAM</option>
+                        <option value="4 GB">4 GB</option>
+                        <option value="6 GB">6 GB</option>
+                        <option value="8 GB">8 GB</option>
+                        <option value="12 GB">12 GB</option>
+                        <option value="16 GB">16 GB</option>
+                        <option value="24 GB">24 GB</option>
+                        <option value="32 GB">32 GB</option>
+                        <option value="48 GB">48 GB</option>
+                        <option value="64 GB">64 GB</option>
+                    </select>
+                </div>
+                <!-- CPU -->
+                <div class="form-group">
+                    <label for="cpu">CPU</label>
+                    <input type="text" name="cpu"
+                        class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        placeholder="Enter CPU">
+                </div>
+
+                <!-- GPU -->
+                <div class="form-group">
+                    <label for="gpu">GPU</label>
+                    <input type="text" name="gpu"
+                        class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        placeholder="Enter GPU">
+                </div>
+
+                <!-- Disk -->
+                <div class="form-group">
+                    <label for="disk">Disk</label>
+                    <input type="text" name="disk"
+                        class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        placeholder="Enter Disk Capacity">
+                </div>
+
                 <!-- Note Content -->
                 <div class="form-group">
                     <label for="note" class="block font-medium mb-1">Note Content</label>
@@ -21,6 +62,7 @@
                         class="note-body w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
                         placeholder="Enter your note here">{{ $note->note }}</textarea>
                 </div>
+
 
                 <!-- Select Room -->
                 <div class="form-group">
@@ -35,6 +77,8 @@
                         @endfor
                     </select>
                 </div>
+
+
 
                 <!-- Select Date -->
                 <div class="form-group w-40">

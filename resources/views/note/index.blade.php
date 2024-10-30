@@ -14,6 +14,20 @@
                 <option value="no" {{ request('scrapped') == 'no' ? 'selected' : '' }}>Nie zezłomowany</option>
             </select>
 
+            <!-- Sortowanie po ilości RAM-u -->
+            <select id="filter_ram" name="filter_ram" class="px-4 py-2 border rounded-md">
+                <option value="" selected>Wybierz RAM</option>
+                <option value="4" {{ request('filter_ram') == '4' ? 'selected' : '' }}>4 GB</option>
+                <option value="6" {{ request('filter_ram') == '6' ? 'selected' : '' }}>6 GB</option>
+                <option value="8" {{ request('filter_ram') == '8' ? 'selected' : '' }}>8 GB</option>
+                <option value="12" {{ request('filter_ram') == '12' ? 'selected' : '' }}>12 GB</option>
+                <option value="16" {{ request('filter_ram') == '16' ? 'selected' : '' }}>16 GB</option>
+                <option value="24" {{ request('filter_ram') == '24' ? 'selected' : '' }}>24 GB</option>
+                <option value="32" {{ request('filter_ram') == '32' ? 'selected' : '' }}>32 GB</option>
+                <option value="48" {{ request('filter_ram') == '48' ? 'selected' : '' }}>48 GB</option>
+                <option value="64" {{ request('filter_ram') == '64' ? 'selected' : '' }}>64 GB</option>
+            </select>
+
             <!-- Przycisk wyszukiwania -->
             <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
                 Search
@@ -22,11 +36,13 @@
     </div>
 
     <!-- Container for displaying notes -->
-    <div class="note-container flex flex-wrap justify-center">
-        <a href="{{ route('note.create') }}" class="new-note-btn">
+    <div class="note-container flex flex-col items-center space-y-4">
+        <!-- Przycisk New PC na środku -->
+        <a href="{{ route('note.create') }}" class="new-note-btn mb-4">
             New PC
         </a>
 
+        <!-- Kontener dla notatek -->
         <div class="notes grid grid-cols-3 gap-4">
             @foreach ($notes as $note)
                 @php
@@ -38,9 +54,6 @@
                         <h4><strong>Title:</strong> {{ $note->title }}</h4>
                         <p><strong>Sala:</strong> {{ $note->room }}</p>
                         <p><strong>Date:</strong> {{ $note->date }}</p>
-
-                        {{-- <!-- Display the note content (snippet) -->
-                        <p>{{ Str::words($note->note, 10) }}</p> --}}
                     </div>
                     <!-- Przyciski -->
                     <div class="note-buttons absolute bottom-2 right-2 flex space-x-2">

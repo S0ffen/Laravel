@@ -26,6 +26,7 @@
     text-align: center;
     text-decoration: none;
     color: #1e1e1e;
+    
 }
 .new-note-btn:hover {
     box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);

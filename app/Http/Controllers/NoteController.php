@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Note;
 use Illuminate\Http\Request;
+use PhpParser\Node\NullableType;
 
 class NoteController extends Controller
 {
@@ -14,6 +15,8 @@ class NoteController extends Controller
     {
         $query = $request->input('query');
         $scrapped = $request->input('scrapped');
+        $filterRam = $request->input('filter_ram');
+
 
         $notes = Note::query()
             ->where('user_id', $request->user()->id)
@@ -23,6 +26,11 @@ class NoteController extends Controller
             ->when($scrapped, function ($queryBuilder) use ($scrapped) {
                 $queryBuilder->where('scrapped', $scrapped);
             })
+            ->when($filterRam, function ($queryBuilder) use ($filterRam) {
+                $queryBuilder->where('scrapped', $filterRam);
+                dd($filterRam);
+            })
+
             ->orderBy('created_at', 'desc')
             ->paginate();
 
@@ -50,6 +58,11 @@ class NoteController extends Controller
             'room' => ['required', 'string'],
             'date' => ['required', 'date'],
             'scrapped' => ['required', 'in:yes,no'],
+            'ram' => 'nullable|string',
+            'cpu' => 'nullable|string',
+            'gpu' => 'nullable|string',
+            'disk' => 'nullable|string',
+
         ]);
 
         $data['user_id'] = $request->user()->id;
@@ -92,6 +105,10 @@ class NoteController extends Controller
             'room' => ['required', 'string'],
             'date' => ['required', 'date'],
             'scrapped' => ['required', 'in:yes,no'], // Dodanie walidacji dla scra
+            'ram' => 'nullable|string',
+            'cpu' => 'nullable|string',
+            'gpu' => 'nullable|string',
+            'disk' => 'nullable|string',
         ]);
 
 

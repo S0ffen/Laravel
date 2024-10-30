@@ -5,12 +5,16 @@
 
             <!-- Note details -->
             <div class="text-lg space-y-4">
-                <p class=" text-2xl"><strong>Title:</strong> {{ $note->title }}</p>
-                <p class=" text-2xl"><strong>Room:</strong> {{ $note->room }}</p>
-                <p class=" text-2xl"><strong>Date:</strong> {{ $note->date }}</p>
-                <p class=" text-2xl"><strong>Created At:</strong> {{ $note->created_at }}</p>
-                <p class=" text-2xl"><strong>Content:</strong> {{ $note->note }}</p>
-                <p class=" text-2xl">
+                <p class="text-2xl"><strong>Title:</strong> {{ $note->title }}</p>
+                <p class="text-2xl"><strong>Room:</strong> {{ $note->room }}</p>
+                <p class="text-2xl"><strong>RAM:</strong> {{ $note->ram }}</p>
+                <p class="text-2xl"><strong>CPU:</strong> {{ $note->cpu }}</p>
+                <p class="text-2xl"><strong>GPU:</strong> {{ $note->gpu }}</p>
+                <p class="text-2xl"><strong>Disk:</strong> {{ $note->disk }}</p>
+                <p class="text-2xl"><strong>Date:</strong> {{ $note->date }}</p>
+                <p class="text-2xl"><strong>Created At:</strong> {{ $note->created_at }}</p>
+                <p class="text-2xl break-words"><strong>Content:</strong> {{ $note->note }}</p>
+                <p class="text-2xl">
                     <strong>Scrapped:</strong>
                     <span
                         class="{{ $note->scrapped == 'yes' ? 'text-red-600 font-bold' : 'text-green-600 font-bold' }}">

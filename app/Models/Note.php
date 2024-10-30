@@ -16,6 +16,10 @@ class Note extends Model
         'date',
         'user_id',
         'scrapped',
+        'ram',
+        'cpu',
+        'gpu',
+        'disk'
 
     ];
 }
