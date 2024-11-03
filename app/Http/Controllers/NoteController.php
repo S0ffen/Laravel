@@ -27,8 +27,7 @@ class NoteController extends Controller
                 $queryBuilder->where('scrapped', $scrapped);
             })
             ->when($filterRam, function ($queryBuilder) use ($filterRam) {
-                $queryBuilder->where('scrapped', $filterRam);
-                dd($filterRam);
+                $queryBuilder->where('ram', 'LIKE', "{$filterRam}%"); // Dopasuj tylko liczbową część
             })
 
             ->orderBy('created_at', 'desc')
@@ -152,5 +151,18 @@ class NoteController extends Controller
         $notes = $query->paginate(10); // Paginacja wyników
 
         return view('note.index', compact('notes'));
+    }
+
+    public function copy(Note $note)
+    {
+        // Skopiuj dane notatki bez ID i daty utworzenia
+        $newNote = $note->replicate();
+        $newNote->created_at = now();
+        $newNote->updated_at = now();
+
+        // Zapisz skopiowaną notatkę do bazy danych
+        $newNote->save();
+
+        return redirect()->route('note.index')->with('message', 'Note copied successfully.');
     }
 }

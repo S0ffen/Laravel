@@ -56,7 +56,12 @@
                         <p><strong>Date:</strong> {{ $note->date }}</p>
                     </div>
                     <!-- Przyciski -->
-                    <div class="note-buttons absolute bottom-2 right-2 flex space-x-2">
+                    <div class="note-buttons absolute bottom-0 right-2 flex space-x-1">
+                        <form action="{{ route('note.copy', $note) }}" method="POST">
+                            @csrf
+                            <button type="submit"
+                                class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-700">Copy</button>
+                        </form>
                         <a href="{{ route('note.show', $note) }}"
                             class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-700">View</a>
                         <a href="{{ route('note.edit', $note) }}"
@@ -67,6 +72,7 @@
                             <button type="submit"
                                 class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-700">Delete</button>
                         </form>
+
                     </div>
                 </div>
             @endforeach

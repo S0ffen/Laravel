@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/notes/searchScrapped', [NoteController::class, 'searchByScrapped'])->name('notes.searchScrapped');
+    Route::post('/notes/{note}/copy', [NoteController::class, 'copy'])->name('note.copy');
 });
 
 require __DIR__ . '/auth.php';
