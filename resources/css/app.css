@@ -87,7 +87,6 @@
 .note-buttons {
     text-align: right;
     padding: 10px;
-    display: flex;
     gap: 5px;
     justify-content: end;
 }

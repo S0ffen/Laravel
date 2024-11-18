@@ -31,7 +31,7 @@ class NoteController extends Controller
             })
 
             ->orderBy('created_at', 'desc')
-            ->paginate();
+            ->paginate(20);
 
         return view('note.index', ['notes' => $notes]);
     }
