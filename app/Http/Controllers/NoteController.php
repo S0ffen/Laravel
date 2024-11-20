@@ -36,7 +36,6 @@ class NoteController extends Controller
         return view('note.index', ['notes' => $notes]);
     }
 
-
     /**
      * Show the form for creating a new resource.
      */

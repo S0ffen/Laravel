@@ -2,6 +2,9 @@
 
 
     <div class=" p-16  w-3/4  ml-32">
+        <a href="{{ route('note.create') }}" class="new-note-btn">
+            New PC
+        </a>
         <!-- Add a table for DataTables -->
         <table id="your-table-id" class="min-w-full divide-y divide-gray-200">
             <!-- Table Head -->
@@ -10,7 +13,8 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         <input type="checkbox" id="select-all" onclick="toggleAll(this)">
                     </th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title
+                    </th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Room</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions
