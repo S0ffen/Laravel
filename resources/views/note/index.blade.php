@@ -5,6 +5,8 @@
         <a href="{{ route('note.create') }}" class="new-note-btn">
             New PC
         </a>
+
+
         <!-- Add a table for DataTables -->
         <table id="your-table-id" class="min-w-full divide-y divide-gray-200">
             <!-- Table Head -->

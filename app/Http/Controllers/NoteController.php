@@ -16,6 +16,10 @@ class NoteController extends Controller
         $query = $request->input('query');
         $scrapped = $request->input('scrapped');
         $filterRam = $request->input('filter_ram');
+        $perPage = $request->input('per_page', 15); // Domyślnie 15, jeśli brak parametru
+
+
+
 
 
         $notes = Note::query()
@@ -31,9 +35,10 @@ class NoteController extends Controller
             })
 
             ->orderBy('created_at', 'desc')
-            ->paginate(20);
+            ->paginate($perPage);
 
-        return view('note.index', ['notes' => $notes]);
+        return view('note.index', ['notes' => $notes, 'perPage' => $perPage]); // Dodaj `perPage` do widoku
+
     }
 
     /**

@@ -46,13 +46,31 @@
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#your-table-id').DataTable({
-                "pageLength": 50, // Ustawienie liczby rekordów na stronę
+            let perPage = {{ request()->input('per_page', 15) }}; // Aktualna liczba elementów na stronę
+
+            let table = $('#your-table-id').DataTable({
+                "pageLength": perPage, // Zainicjalizuj tabelę z poprawną wartością
                 "lengthMenu": [10, 25, 50, 100], // Opcje wyboru liczby rekordów
-                "paging": true // Włącz paginację
+                "paging": true, // Włącz paginację
             });
+
+            $('#your-table-id_length select').val(perPage); // Ustaw poprawną wartość w dropdownie
+
+            // Obsługa zmiany liczby rekordów na stronę
+            $('#your-table-id_length select').on('change', function() {
+                let selectedPerPage = $(this).val(); // Pobierz nową wartość
+                updatePerPage(selectedPerPage); // Zaktualizuj parametr w backendzie
+            });
+
+            function updatePerPage(selectedPerPage) {
+                let url = new URL(window.location.href);
+                url.searchParams.set('per_page', selectedPerPage); // Zaktualizuj parametr w URL
+                window.location.href = url.toString(); // Odśwież stronę
+            }
         });
     </script>
+
+
 </body>
 
 </html>
