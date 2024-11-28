@@ -1,24 +1,24 @@
 <x-app-layout>
     <div class="flex justify-center">
         <div class="container mx-auto max-w-lg bg-white shadow-lg rounded-lg p-8 m-10">
-            <h1 class="text-3xl font-semibold text-center mb-8">Note Details</h1>
+            <h1 class="text-3xl font-semibold text-center mb-8">Informacje o elemencie</h1>
 
             <!-- Note details -->
             <div class="text-lg space-y-4">
-                <p class="text-2xl"><strong>Title:</strong> {{ $note->title }}</p>
-                <p class="text-2xl"><strong>Room:</strong> {{ $note->room }}</p>
+                <p class="text-2xl"><strong>Nazwa elementu:</strong> {{ $note->title }}</p>
+                <p class="text-2xl"><strong>Sala:</strong> {{ $note->room }}</p>
                 <p class="text-2xl"><strong>RAM:</strong> {{ $note->ram }}</p>
                 <p class="text-2xl"><strong>CPU:</strong> {{ $note->cpu }}</p>
                 <p class="text-2xl"><strong>GPU:</strong> {{ $note->gpu }}</p>
-                <p class="text-2xl"><strong>Disk:</strong> {{ $note->disk }}</p>
-                <p class="text-2xl"><strong>Date:</strong> {{ $note->date }}</p>
-                <p class="text-2xl"><strong>Created At:</strong> {{ $note->created_at }}</p>
-                <p class="text-2xl break-words"><strong>Content:</strong> {{ $note->note }}</p>
+                <p class="text-2xl"><strong>Dysk:</strong> {{ $note->disk }}</p>
+                <p class="text-2xl"><strong>Data:</strong> {{ $note->date }}</p>
+                <p class="text-2xl"><strong>Stworzono:</strong> {{ $note->created_at }}</p>
+                <p class="text-2xl break-words"><strong>Notatka:</strong> {{ $note->note }}</p>
                 <p class="text-2xl">
-                    <strong>Scrapped:</strong>
+                    <strong>Zezłomowany:</strong>
                     <span
                         class="{{ $note->scrapped == 'yes' ? 'text-red-600 font-bold' : 'text-green-600 font-bold' }}">
-                        {{ $note->scrapped == 'yes' ? 'Yes' : 'No' }}
+                        {{ $note->scrapped == 'yes' ? 'Tak' : 'Nie' }}
                     </span>
                 </p>
             </div>
