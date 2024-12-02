@@ -11,15 +11,18 @@ class Note extends Model
 
     protected $fillable = [
         'title',
-        'note',
-        'room',
-        'date',
-        'user_id',
-        'scrapped',
+        'element_type',
         'ram',
         'cpu',
         'gpu',
-        'disk'
-
+        'resolution',
+        'size',
+        'loudness',
+        'storage',
+        'note',
+        'room',
+        'date',
+        'scrapped',
+        'user_id',
     ];
 }

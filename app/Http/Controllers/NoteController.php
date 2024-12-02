@@ -54,18 +54,22 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
+
         // Dodanie walidacji dla nowych pól
         $data = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'note' => ['required', 'string'],
-            'room' => ['required', 'string'],
-            'date' => ['required', 'date'],
-            'scrapped' => ['required', 'in:yes,no'],
+            'title' => 'required|string|max:255',
+            'element_type' => 'required|string',
             'ram' => 'nullable|string',
             'cpu' => 'nullable|string',
             'gpu' => 'nullable|string',
-            'disk' => 'nullable|string',
-
+            'resolution' => 'nullable|string',
+            'size' => 'nullable|integer',
+            'loudness' => 'nullable|integer',
+            'storage' => 'nullable|string',
+            'note' => 'required|string',
+            'room' => 'required|integer',
+            'date' => 'required|date',
+            'scrapped' => 'required|in:yes,no',
         ]);
 
         $data['user_id'] = $request->user()->id;
@@ -75,6 +79,8 @@ class NoteController extends Controller
         // Tworzenie nowej notki z danymi
         $note = Note::create($data);
         $note->refresh();
+
+
 
         return to_route('note.show', $note)->with('message', 'Note was created');
     }
