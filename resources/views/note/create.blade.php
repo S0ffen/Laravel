@@ -108,6 +108,10 @@
                         <label for="cpu">CPU</label>
                         <input  id="cpu" type="text" name="cpu" class="form-control" placeholder="Enter CPU">
                     </div>
+                    <div class="form-group">
+                        <label for="gpu">GPU</label>
+                        <input type="text" name="gpu" class="form-control" placeholder="Enter GPU">
+                    </div>
                 `,
                 monitor: `
                     <div class="form-group">

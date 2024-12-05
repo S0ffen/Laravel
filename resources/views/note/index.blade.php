@@ -12,9 +12,6 @@
             <!-- Table Head -->
             <thead class="bg-gray-50">
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        <input type="checkbox" id="select-all" onclick="toggleAll(this)">
-                    </th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tytuł
                     </th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sala</th>
@@ -28,15 +25,13 @@
             <tbody class="bg-white divide-y divide-gray-200">
                 @foreach ($notes as $note)
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <input type="checkbox" class="note-checkbox" onclick="toggleButtons()">
-                        </td>
+
                         <td class="px-6 py-4 whitespace-nowrap">{{ $note->title }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $note->room }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $note->date }}</td>
                         <td class="px-6 py-4 whitespace-nowrap  h-14">
                             <!-- Action buttons (hidden by default) -->
-                            <div class="note-buttons hidden">
+                            <div class="note-buttons flex">
                                 <form action="{{ route('note.copy', $note) }}" method="POST">
                                     @csrf
                                     <button type="submit"
@@ -64,30 +59,5 @@
     <div class="p-6">
         {{ $notes->links() }}
     </div>
-
-    <script>
-        function toggleAll(source) {
-            const checkboxes = document.querySelectorAll('.note-checkbox');
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = source.checked;
-            });
-            toggleButtons();
-        }
-
-        function toggleButtons() {
-            const rows = document.querySelectorAll('tbody tr');
-            rows.forEach(row => {
-                const checkbox = row.querySelector('.note-checkbox');
-                const buttons = row.querySelector('.note-buttons');
-                if (checkbox.checked) {
-                    buttons.classList.remove('hidden');
-                    buttons.classList.add('flex')
-                } else {
-                    buttons.classList.add('hidden');
-                }
-            });
-        }
-    </script>
-
 
 </x-app-layout>
