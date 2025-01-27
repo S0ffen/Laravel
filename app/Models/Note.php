@@ -24,5 +24,6 @@ class Note extends Model
         'date',
         'scrapped',
         'user_id',
+        'disk'
     ];
 }

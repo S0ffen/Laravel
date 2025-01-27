@@ -112,6 +112,10 @@
                         <label for="gpu">GPU</label>
                         <input type="text" name="gpu" class="form-control" placeholder="Enter GPU">
                     </div>
+                                        <div class="form-group">
+                        <label for="disk">Pojemność Dysku</label>
+                        <input type="text" name="disk" class="form-control" placeholder="Enter Disk">
+                    </div>
                 `,
                 monitor: `
                     <div class="form-group">
@@ -149,8 +153,8 @@
                         <input type="text" name="gpu" class="form-control" placeholder="Enter GPU">
                     </div>
                     <div class="form-group">
-                        <label for="storage">Pojemność Dysku</label>
-                        <input type="text" name="storage" class="form-control" placeholder="Enter storage size">
+                        <label for="disk">Pojemność Dysku</label>
+                        <input type="text" name="disk" class="form-control" placeholder="Enter Disk">
                     </div>
                 `
             };

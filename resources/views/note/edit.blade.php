@@ -133,6 +133,8 @@
                         <select name="ram" class="form-control">
                             <option value="8 GB" {{ $note->ram == '8 GB' ? 'selected' : '' }}>8 GB</option>
                             <option value="16 GB" {{ $note->ram == '16 GB' ? 'selected' : '' }}>16 GB</option>
+                            <option value="32 GB" {{ $note->ram == '32 GB' ? 'selected' : '' }}>32 GB</option>
+                            <option value="64 GB" {{ $note->ram == '64 GB' ? 'selected' : '' }}>64 GB</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -142,6 +144,10 @@
                     <div class="form-group">
                         <label for="gpu">GPU</label>
                         <input type="text" name="gpu" value="{{ $note->gpu }}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="storage">Pojemność Dysku</label>
+                        <input type="text" name="storage" value="{{ $note->disk }}" class="form-control">
                     </div>
                 `
             };

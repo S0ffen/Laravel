@@ -55,7 +55,5 @@
         </table>
     </div>
 
-    <div class="p-6">
-        {{ $notes->links() }}
-    </div>
+
 </x-app-layout>

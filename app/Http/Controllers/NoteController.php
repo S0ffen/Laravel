@@ -16,11 +16,7 @@ class NoteController extends Controller
         $query = $request->input('query');
         $scrapped = $request->input('scrapped');
         $filterRam = $request->input('filter_ram');
-        $perPage = $request->input('per_page', 15); // Domyślnie 15, jeśli brak parametru
-
-
-
-
+        $perPage = $request->input('per_page', 30);
 
         $notes = Note::query()
             ->where('user_id', $request->user()->id)
@@ -31,15 +27,15 @@ class NoteController extends Controller
                 $queryBuilder->where('scrapped', $scrapped);
             })
             ->when($filterRam, function ($queryBuilder) use ($filterRam) {
-                $queryBuilder->where('ram', 'LIKE', "{$filterRam}%"); // Dopasuj tylko liczbową część
+                $queryBuilder->where('ram', 'LIKE', "{$filterRam}%");
             })
-
             ->orderBy('created_at', 'desc')
-            ->paginate($perPage);
+            ->get();
 
-        return view('note.index', ['notes' => $notes, 'perPage' => $perPage]); // Dodaj `perPage` do widoku
-
+        return view('note.index', ['notes' => $notes]); // Przekazanie $notes do widoku
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -65,7 +61,7 @@ class NoteController extends Controller
             'resolution' => 'nullable|string',
             'size' => 'nullable|integer',
             'loudness' => 'nullable|integer',
-            'storage' => 'nullable|string',
+            'disk' => 'nullable|string',
             'note' => 'required|string',
             'room' => 'required|integer',
             'date' => 'required|date',
