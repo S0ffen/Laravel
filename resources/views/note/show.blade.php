@@ -26,12 +26,12 @@
             <!-- Action buttons -->
             <div class="mt-8 flex justify-end space-x-4">
                 <a href="{{ route('note.edit', $note) }}"
-                    class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Edit</a>
+                    class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Edytuj</a>
                 <form action="{{ route('note.destroy', $note) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit"
-                        class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">Delete</button>
+                        class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">Usuń</button>
                 </form>
             </div>
         </div>

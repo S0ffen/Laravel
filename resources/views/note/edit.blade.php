@@ -6,6 +6,13 @@
                 @csrf
                 @method('PUT')
 
+                <div class="form-group">
+                    <label for="title" class="block font-medium mb-1">Tytuł</label>
+                    <input type="text" id="title" name="title"
+                        class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        value="{{ $note->title }}" required>
+                </div>
+
                 <!-- Typ Elementu -->
                 <div class="form-group">
                     <label for="elementType" class="block font-medium mb-1">Typ Elementu</label>

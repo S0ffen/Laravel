@@ -42,7 +42,7 @@
 
                 <!-- Select Room -->
                 <div class="form-group">
-                    <label for="room" class="block font-medium mb-1">Select Room</label>
+                    <label for="room" class="block font-medium mb-1">Wybór sali</label>
                     <select id="room" name="room"
                         class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
                         required>
@@ -68,9 +68,9 @@
                 <!-- Buttons -->
                 <div class="note-buttons flex justify-end space-x-3 mt-6">
                     <a href="{{ route('note.index') }}"
-                        class="note-cancel-button bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</a>
+                        class="note-cancel-button bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Anuluj</a>
                     <button type="submit"
-                        class="note-submit-button bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Submit</button>
+                        class="note-submit-button bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Zatwierdź</button>
                 </div>
             </form>
         </div>

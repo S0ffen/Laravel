@@ -52,6 +52,16 @@
                 "pageLength": perPage, // Zainicjalizuj tabelę z poprawną wartością
                 "lengthMenu": [10, 25, 50, 100], // Opcje wyboru liczby rekordów
                 "paging": true, // Włącz paginację
+                language: {
+                    search: "Szukaj:", // Zmień "Search" na "Szukaj"
+                    infoFiltered: "(przefiltrowane z _MAX_ wszystkich wpisów)",
+                    info: "Wyświetlane _START_ do _END_ z _TOTAL_ wpisów",
+                    lengthMenu: "Pokaż _MENU_ wpisów", // Zmień "Show entries" na "Pokaż wpisy"
+
+
+
+                }
+
             });
 
             $('#your-table-id_length select').val(perPage); // Ustaw poprawną wartość w dropdownie
