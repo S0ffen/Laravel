@@ -7,10 +7,30 @@
             <div class="text-lg space-y-4">
                 <p class="text-2xl"><strong>Nazwa elementu:</strong> {{ $note->title }}</p>
                 <p class="text-2xl"><strong>Sala:</strong> {{ $note->room }}</p>
-                <p class="text-2xl"><strong>RAM:</strong> {{ $note->ram }}</p>
-                <p class="text-2xl"><strong>CPU:</strong> {{ $note->cpu }}</p>
-                <p class="text-2xl"><strong>GPU:</strong> {{ $note->gpu }}</p>
-                <p class="text-2xl"><strong>Dysk:</strong> {{ $note->disk }}</p>
+
+                <!-- Wyświetlanie pól w zależności od typu elementu -->
+                @if ($note->element_type == 'laptop')
+                    <p class="text-2xl"><strong>Typ:</strong> {{ $note->element_type }}</p>
+                    <p class="text-2xl"><strong>RAM:</strong> {{ $note->ram }}</p>
+                    <p class="text-2xl"><strong>CPU:</strong> {{ $note->cpu }}</p>
+                    <p class="text-2xl"><strong>GPU:</strong> {{ $note->gpu }}</p>
+                    <p class="text-2xl"><strong>Dysk:</strong> {{ $note->disk }}</p>
+                @elseif ($note->element_type == 'monitor')
+                    <p class="text-2xl"><strong>Typ:</strong> {{ $note->element_type }}</p>
+                    <p class="text-2xl"><strong>Rozdzielczość:</strong> {{ $note->resolution }}</p>
+                    <p class="text-2xl"><strong>Rozmiar (cale):</strong> {{ $note->size }}</p>
+                @elseif ($note->element_type == 'głośnik')
+                    <p class="text-2xl"><strong>Typ:</strong> {{ $note->element_type }}</p>
+                    <p class="text-2xl"><strong>Głośność (dB):</strong> {{ $note->loudness }}</p>
+                @elseif ($note->element_type == 'komputer')
+                    <p class="text-2xl"><strong>Typ:</strong> {{ $note->element_type }}</p>
+                    <p class="text-2xl"><strong>RAM:</strong> {{ $note->ram }}</p>
+                    <p class="text-2xl"><strong>CPU:</strong> {{ $note->cpu }}</p>
+                    <p class="text-2xl"><strong>GPU:</strong> {{ $note->gpu }}</p>
+                    <p class="text-2xl"><strong>Dysk:</strong> {{ $note->disk }}</p>
+                @endif
+
+                <!-- Wspólne pola -->
                 <p class="text-2xl"><strong>Data:</strong> {{ $note->date }}</p>
                 <p class="text-2xl"><strong>Stworzono:</strong> {{ $note->created_at }}</p>
                 <p class="text-2xl break-words"><strong>Notatka:</strong> {{ $note->note }}</p>

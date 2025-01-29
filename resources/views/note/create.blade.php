@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="flex justify-center">
-        <div class="note-container single-note bg-yellow-300 p-8 rounded-lg shadow-md max-w-2xl w-full">
+        <div class="note-container single-note p-8 rounded-lg shadow-md max-w-2xl w-full">
             <h1 class="text-3xl text-center font-semibold mb-8">Stworzenie nowego elementu do bazy danych</h1>
             <form action="{{ route('note.store') }}" method="POST" class="space-y-6">
                 @csrf
@@ -22,8 +22,8 @@
                         <option value="" disabled selected>Wybierz typ elementu</option>
                         <option value="laptop">Laptop</option>
                         <option value="monitor">Monitor</option>
-                        <option value="speaker">Głośnik</option>
-                        <option value="computer">Komputer</option>
+                        <option value="głośnik">Głośnik</option>
+                        <option value="komputer">Komputer</option>
                     </select>
                 </div>
 
@@ -60,7 +60,9 @@
                         required>
                 </div>
 
-                <select id="scrapped" name="scrapped" required>
+                <select id="scrapped" name="scrapped"
+                    class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                    required>
                     <option value="no">Nie</option>
                     <option value="yes">Tak</option>
                 </select>
@@ -96,7 +98,7 @@
                 laptop: `
                     <div class="form-group">
                         <label for="ram">RAM</label>
-                        <select id="ram" name="ram" class="form-control">
+                        <select id="ram" name="ram" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300">
                             <option value="" disabled selected>Select RAM</option>
                             <option value="4 GB">4 GB</option>
                             <option value="8 GB">8 GB</option>
@@ -106,37 +108,37 @@
                     </div>
                     <div class="form-group">
                         <label for="cpu">CPU</label>
-                        <input  id="cpu" type="text" name="cpu" class="form-control" placeholder="Enter CPU">
+                        <input  id="cpu" type="text" name="cpu" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" placeholder="Enter CPU">
                     </div>
                     <div class="form-group">
                         <label for="gpu">GPU</label>
-                        <input type="text" name="gpu" class="form-control" placeholder="Enter GPU">
+                        <input type="text" name="gpu" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" placeholder="Enter GPU">
                     </div>
                                         <div class="form-group">
                         <label for="disk">Pojemność Dysku</label>
-                        <input type="text" name="disk" class="form-control" placeholder="Enter Disk">
+                        <input type="text" name="disk" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" placeholder="Enter Disk">
                     </div>
                 `,
                 monitor: `
                     <div class="form-group">
                         <label for="resolution">Rozdzielczość</label>
-                        <input type="text" name="resolution" class="form-control" placeholder="1920x1080">
+                        <input type="text" name="resolution" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" placeholder="1920x1080">
                     </div>
                     <div class="form-group">
                         <label for="size">Rozmiar (cale)</label>
-                        <input type="number" name="size" class="form-control" placeholder="Enter size in inches">
+                        <input type="number" name="size" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" placeholder="Enter size in inches">
                     </div>
                 `,
-                speaker: `
+                głośnik: `
                     <div class="form-group">
                         <label for="loudness">Głośność (dB)</label>
-                        <input type="number" name="loudness" class="form-control" placeholder="Enter loudness in dB">
+                        <input type="number" name="loudness" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" placeholder="Enter loudness in dB">
                     </div>
                 `,
-                computer: `
+                komputer: `
                     <div class="form-group">
                         <label for="ram">RAM</label>
-                        <select name="ram" class="form-control">
+                        <select name="ram" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300">
                             <option value="" disabled selected>Select RAM</option>
                             <option value="8 GB">8 GB</option>
                             <option value="16 GB">16 GB</option>
@@ -146,15 +148,15 @@
                     </div>
                     <div class="form-group">
                         <label for="cpu">CPU</label>
-                        <input type="text" name="cpu" class="form-control" placeholder="Enter CPU">
+                        <input type="text" name="cpu" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" placeholder="Enter CPU">
                     </div>
                     <div class="form-group">
                         <label for="gpu">GPU</label>
-                        <input type="text" name="gpu" class="form-control" placeholder="Enter GPU">
+                        <input type="text" name="gpu" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" placeholder="Enter GPU">
                     </div>
                     <div class="form-group">
                         <label for="disk">Pojemność Dysku</label>
-                        <input type="text" name="disk" class="form-control" placeholder="Enter Disk">
+                        <input type="text" name="disk" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" placeholder="Enter Disk">
                     </div>
                 `
             };

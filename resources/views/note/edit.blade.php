@@ -95,7 +95,7 @@
                 laptop: `
                     <div class="form-group">
                         <label for="ram">RAM</label>
-                        <select id="ram" name="ram" class="form-control">
+                        <select id="ram" name="ram" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300">
                             <option value="" disabled selected>Select RAM</option>
                             <option value="4 GB" {{ $note->ram == '4 GB' ? 'selected' : '' }}>4 GB</option>
                             <option value="8 GB" {{ $note->ram == '8 GB' ? 'selected' : '' }}>8 GB</option>
@@ -104,33 +104,37 @@
                     </div>
                     <div class="form-group">
                         <label for="cpu">CPU</label>
-                        <input id="cpu" type="text" name="cpu" value="{{ $note->cpu }}" class="form-control">
+                        <input id="cpu" type="text" name="cpu" value="{{ $note->cpu }}" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300">
                     </div>
                     <div class="form-group">
                         <label for="gpu">GPU</label>
-                        <input id="gpu" type="text" name="gpu" value="{{ $note->gpu }}" class="form-control" placeholder="Enter GPU">
+                        <input id="gpu" type="text" name="gpu" value="{{ $note->gpu }}" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" placeholder="Enter GPU">
+                    </div>
+                    <div class="form-group">
+                        <label for="storage">Pojemność Dysku</label>
+                        <input type="text" name="storage" value="{{ $note->disk }}" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300">
                     </div>
                 `,
                 monitor: `
                     <div class="form-group">
                         <label for="resolution">Rozdzielczość</label>
-                        <input type="text" name="resolution" class="form-control" value="{{ $note->resolution }}">
+                        <input type="text" name="resolution" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" value="{{ $note->resolution }}">
                     </div>
                     <div class="form-group">
                         <label for="size">Rozmiar (cale)</label>
-                        <input type="number" name="size" class="form-control" value="{{ $note->size }}">
+                        <input type="number" name="size" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" value="{{ $note->size }}">
                     </div>
                 `,
                 speaker: `
                     <div class="form-group">
                         <label for="loudness">Głośność (dB)</label>
-                        <input type="number" name="loudness" class="form-control" value="{{ $note->loudness }}">
+                        <input type="number" name="loudness" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" value="{{ $note->loudness }}">
                     </div>
                 `,
                 computer: `
                     <div class="form-group">
                         <label for="ram">RAM</label>
-                        <select name="ram" class="form-control">
+                        <select name="ram" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300">
                             <option value="8 GB" {{ $note->ram == '8 GB' ? 'selected' : '' }}>8 GB</option>
                             <option value="16 GB" {{ $note->ram == '16 GB' ? 'selected' : '' }}>16 GB</option>
                             <option value="32 GB" {{ $note->ram == '32 GB' ? 'selected' : '' }}>32 GB</option>
@@ -139,15 +143,15 @@
                     </div>
                     <div class="form-group">
                         <label for="cpu">CPU</label>
-                        <input type="text" name="cpu" value="{{ $note->cpu }}" class="form-control">
+                        <input type="text" name="cpu" value="{{ $note->cpu }}" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300">
                     </div>
                     <div class="form-group">
                         <label for="gpu">GPU</label>
-                        <input type="text" name="gpu" value="{{ $note->gpu }}" class="form-control">
+                        <input type="text" name="gpu" value="{{ $note->gpu }}" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300">
                     </div>
                     <div class="form-group">
                         <label for="storage">Pojemność Dysku</label>
-                        <input type="text" name="storage" value="{{ $note->disk }}" class="form-control">
+                        <input type="text" name="storage" value="{{ $note->disk }}" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300">
                     </div>
                 `
             };

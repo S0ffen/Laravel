@@ -6,10 +6,14 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 .note-container {
     max-width: 1300px;
     margin: 0 auto;
+    background-color: rgb(211 219 235);
 }
+
+
 .new-note-btn {
     width: 200px;
     display: block;
@@ -21,24 +25,27 @@
     outline: 0;
     transition: all 0.3s;
     cursor: pointer;
-    font-family: "Caveat", cursive;
     text-align: center;
     text-decoration: none;
     color: #1e1e1e;
 }
+
 .new-note-btn:hover {
     box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
 }
+
 .new-note-btn:active {
     position: relative;
     top: 1px;
 }
+
 .notes {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin: 0 auto;
 }
+
 .note {
     border-radius: 8px;
     width: 280px;
@@ -58,13 +65,16 @@
     font-size: 24px;
     padding: 10px 16px 16px;
 }
+
 .notes .note:hover {
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
 }
+
 .single-note .note {
     margin: 0;
     width: 100%;
 }
+
 .single-note .note .note-body {
     background-color: transparent;
     width: 100%;
@@ -73,15 +83,19 @@
     resize: none;
     padding: 20px;
 }
+
 .single-note .note .note-body::placeholder {
     color: #111111;
 }
+
 .note .note-buttons {
     opacity: 0;
 }
+
 .note:hover .note-buttons {
     opacity: 1;
 }
+
 .note-buttons {
     text-align: right;
     padding: 10px;
@@ -101,6 +115,7 @@
     display: inline-block;
     font-size: 16px;
 }
+
 .note-buttons .note-cancel-button:hover {
     background-color: #ffffff;
 }
@@ -117,6 +132,7 @@
     display: inline-block;
     font-size: 16px;
 }
+
 .note-buttons .note-submit-button:hover {
     background-color: #704300;
 }
@@ -139,6 +155,7 @@
     display: inline-block;
     font-size: 16px;
 }
+
 .note-buttons .note-edit-button:hover {
     background-color: #0059b3;
 }
@@ -155,9 +172,11 @@
     display: inline-block;
     font-size: 16px;
 }
+
 .note-buttons .note-delete-button:hover {
     background-color: #a82f2f;
 }
+
 .note-date {
     margin-top: 20px;
     font-size: 13px;
@@ -171,4 +190,9 @@
     color: white;
     border-radius: 4px;
     margin-bottom: 30px;
+}
+
+table.dataTable tbody tr.bg-red-200 {
+    background-color: #ff6161 !important;
+    /* Jasny czerwony */
 }
