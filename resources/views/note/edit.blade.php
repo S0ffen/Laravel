@@ -77,9 +77,9 @@
                 <!-- Buttons -->
                 <div class="note-buttons flex justify-end space-x-3 mt-6">
                     <a href="{{ route('note.index') }}"
-                        class="note-cancel-button bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</a>
+                        class="note-cancel-button bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Anuluj</a>
                     <button type="submit"
-                        class="note-submit-button bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Submit</button>
+                        class="note-submit-button bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Zatwierdź</button>
                 </div>
             </form>
         </div>
@@ -134,7 +134,7 @@
                 computer: `
                     <div class="form-group">
                         <label for="ram">RAM</label>
-                        <select name="ram" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300">
+                        <select id="ram" name="ram" class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300">
                             <option value="8 GB" {{ $note->ram == '8 GB' ? 'selected' : '' }}>8 GB</option>
                             <option value="16 GB" {{ $note->ram == '16 GB' ? 'selected' : '' }}>16 GB</option>
                             <option value="32 GB" {{ $note->ram == '32 GB' ? 'selected' : '' }}>32 GB</option>

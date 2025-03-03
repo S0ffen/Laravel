@@ -60,13 +60,15 @@
                         required>
                 </div>
 
-                <select id="scrapped" name="scrapped"
-                    class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
-                    required>
-                    <option value="no">Nie</option>
-                    <option value="yes">Tak</option>
-                </select>
-
+                <div class="form-group">
+                    <label for="scrapped" class="block font-medium mb-1">Czy element jest zezłomowany?</label>
+                    <select id="scrapped" name="scrapped"
+                        class="form-control w-full p-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+                        required>
+                        <option value="no">Nie</option>
+                        <option value="yes">Tak</option>
+                    </select>
+                </div>
                 <!-- Buttons -->
                 <div class="note-buttons flex justify-end space-x-3 mt-6">
                     <a href="{{ route('note.index') }}"

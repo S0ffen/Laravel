@@ -47,8 +47,15 @@
     <script>
         $(document).ready(function() {
 
+
             let table = $('#your-table-id').DataTable({
                 "paging": false, // Włącz paginację
+                "language": {
+                "search": "Szukaj:",
+                "info": "Pokazano _START_ do _END_ z _TOTAL_ wpisów",
+                "infoEmpty": "Brak dostępnych wpisów",
+                "infoFiltered": "(filtrowano z _MAX_ wpisów)"
+                }
             });
 
             $('#your-table-id_length select').val(perPage); // Ustaw poprawną wartość w dropdownie

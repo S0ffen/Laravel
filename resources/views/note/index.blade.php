@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="p-16 w-3/4 ml-32">
-        <a href="{{ route('note.create') }}" class="new-note-btn">
+        <a href="{{ route('note.create') }}" class="new-note-btn" id="add-btn">
             Nowy element
         </a>
 
